@@ -2,14 +2,16 @@ package com.development.task2.service.impl;
 
 import com.development.task2.entity.Point;
 import com.development.task2.entity.Sphere;
+import com.development.task2.exception.SphereException;
 import com.development.task2.service.SphereOperation;
+import com.development.task2.validator.impl.SphereValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import static java.lang.Math.*;
 
 public class SphereOperationImpl implements SphereOperation {
-    static final Logger LOGGER = LogManager.getLogger(Point.class.getSimpleName());
+    static final Logger LOGGER = LogManager.getLogger(Sphere.class.getSimpleName());
 
     @Override
     public double findSurfaceSquare(Sphere sphere) {
@@ -23,12 +25,24 @@ public class SphereOperationImpl implements SphereOperation {
 
     @Override
     public boolean isSphere(Sphere sphere) {
-        return false;
+        return true;
     }
 
     @Override
-    public double findVolumeRatio(Sphere sphere) {//добавить ещё параметр для разреза (координаты и плоскость?) + return(?)
-        return 0;
+    public double findVolumeRatio(Sphere sphere, double y) throws SphereException {
+        if (!SphereValidatorImpl.getInstance().checkPlaneCoordinate(sphere, y)) {
+            LOGGER.error("Plane doesn't cross this sphere.");
+            throw new SphereException("Plane doesn't cross this sphere.");
+        }
+        double smallerHeight;
+        if (sphere.getCenter().getY() > y) {
+            smallerHeight = y - (sphere.getCenter().getY() - sphere.getRadius());
+        } else {
+            smallerHeight = sphere.getCenter().getY() + sphere.getRadius() - y;
+        }
+        double smallerVolume = PI * pow(smallerHeight, 2) * (sphere.getRadius() - 1d / 3 * smallerHeight);
+        double biggerVolume = findVolume(sphere) - smallerVolume;
+        return smallerVolume / biggerVolume;
     }
 
     @Override

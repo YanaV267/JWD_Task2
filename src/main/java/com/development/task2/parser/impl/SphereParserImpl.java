@@ -8,8 +8,10 @@ import com.development.task2.validator.impl.SphereValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+
 public class SphereParserImpl implements SphereParser {
-    static final Logger LOGGER = LogManager.getLogger(SphereParserImpl.class);
+    static final Logger LOGGER = LogManager.getLogger(Sphere.class.getSimpleName());
 
     @Override
     public Sphere parseParameters(String[] parameterValues) throws SphereException {
@@ -24,10 +26,11 @@ public class SphereParserImpl implements SphereParser {
                 tempArray[index++] = Double.parseDouble(numberValue);
             }
         }
-        if(!SphereValidatorImpl.getInstance().checkParameterAmount(tempArray)){
+        double[] parametersArray = Arrays.copyOf(tempArray, index);
+        if(!SphereValidatorImpl.getInstance().checkParameterAmount(parametersArray)){
             LOGGER.error("The amount of received parameters is invalid.");
             throw new SphereException("The amount of received parameters is invalid.");
         }
-        return SphereFactory.createSphere(tempArray);
+        return SphereFactory.createSphere(parametersArray);
     }
 }

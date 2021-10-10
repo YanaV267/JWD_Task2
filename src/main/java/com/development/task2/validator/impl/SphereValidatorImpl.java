@@ -1,5 +1,6 @@
 package com.development.task2.validator.impl;
 
+import com.development.task2.entity.Sphere;
 import com.development.task2.validator.SphereValidator;
 
 public class SphereValidatorImpl implements SphereValidator {
@@ -24,5 +25,13 @@ public class SphereValidatorImpl implements SphereValidator {
     @Override
     public boolean checkParameterAmount(double[] parameters) {
         return parameters.length == PARAMETER_AMOUNT_REGEX;
+    }
+
+    @Override
+    public boolean checkPlaneCoordinate(Sphere sphere, double y) {
+        if (y > sphere.getCenter().getY() + sphere.getRadius()) {
+            return false;
+        }
+        return y >= sphere.getCenter().getY() - sphere.getRadius();
     }
 }
