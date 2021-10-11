@@ -10,8 +10,8 @@ public class SphereParserTest {
 
     @Test
     public void parseParameters() throws SphereException {
-        double expected = 2;
-        String[] actualParameters = {"6", "0..5", "3", "4", "-3", "2"};
+        double expected = 1;
+        String[] actualParameters = {"6/0..5/3/4/-3/2", "6d1/9/4/-3/2", "8/3/6/1", "8/3/6"};
         SphereParserImpl sphereParser = new SphereParserImpl();
         Sphere sphere = sphereParser.parseParameters(actualParameters);
         Assert.assertEquals(sphere.getRadius(), expected, "invalid parameters parsing");

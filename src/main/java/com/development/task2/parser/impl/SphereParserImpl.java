@@ -12,24 +12,28 @@ import java.util.Arrays;
 
 public class SphereParserImpl implements SphereParser {
     static final Logger LOGGER = LogManager.getLogger(Sphere.class.getSimpleName());
+    private static final String DELIMITER_REGEX = "/";
 
     @Override
-    public Sphere parseParameters(String[] parameterValues) throws SphereException {
-        if (parameterValues == null) {
+    public Sphere parseParameters(String[] parameterStrings) throws SphereException {
+        if (parameterStrings == null) {
             LOGGER.error("File is empty. No data was found in it.");
             throw new SphereException("File is empty. No data was found in it.");
         }
-        double[] tempArray = new double[parameterValues.length];
+        double[] parametersArray = null;
         int index = 0;
-        for (String numberValue : parameterValues) {
-            if (SphereValidatorImpl.getInstance().checkParameterValue(numberValue)) {
-                tempArray[index++] = Double.parseDouble(numberValue);
+        while (parametersArray == null && index != parameterStrings.length) {
+            parametersArray = Arrays.stream(parameterStrings[index++].split(DELIMITER_REGEX))
+                    .filter(value -> SphereValidatorImpl.getInstance().checkParameterValue(value))
+                    .mapToDouble(Double::parseDouble).toArray();
+            if (parametersArray.length != parameterStrings.length ||
+                    !SphereValidatorImpl.getInstance().checkParameterAmount(parametersArray)) {
+                parametersArray = null;
             }
         }
-        double[] parametersArray = Arrays.copyOf(tempArray, index);
-        if(!SphereValidatorImpl.getInstance().checkParameterAmount(parametersArray)){
-            LOGGER.error("The amount of received parameters is invalid.");
-            throw new SphereException("The amount of received parameters is invalid.");
+        if (parametersArray == null) {
+            LOGGER.error("There is no string with necessary amount of parameters.");
+            throw new SphereException("There is no string with necessary amount of parameters.");
         }
         return SphereFactory.createSphere(parametersArray);
     }

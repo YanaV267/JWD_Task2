@@ -4,7 +4,6 @@ import com.development.task2.entity.Sphere;
 import com.development.task2.entity.Point;
 
 public class SphereFactory{
-
     private SphereFactory(){
     }
 

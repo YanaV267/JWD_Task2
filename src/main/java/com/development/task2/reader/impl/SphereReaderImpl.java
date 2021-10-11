@@ -4,23 +4,26 @@ import com.development.task2.exception.SphereException;
 import com.development.task2.reader.SphereReader;
 
 import java.io.*;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 public class SphereReaderImpl implements SphereReader {
-    private static final String DELIMITER_REGEX = "/";
 
     @Override
     public String[] readParameters(String path) throws SphereException {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
-        if (inputStream == null) {
+        if (getClass().getClassLoader().getResource(path) == null) {
             throw new SphereException("file " + path + " doesn't exits in this directory");
         }
+        String filePath = URLDecoder.decode(Objects.requireNonNull(getClass().getClassLoader().getResource(path)).getPath(),
+                StandardCharsets.UTF_8);
+        filePath = filePath.replace("/", "\\\\").substring(2);
         String[] arrayOfParameters;
-        try (InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-             BufferedReader reader = new BufferedReader(streamReader)) {
-            arrayOfParameters = reader.lines()
-                    .findFirst()
-                    .map(line -> line.split(DELIMITER_REGEX)).orElse(null);
+        try (Stream<String> lines = Files.lines(Path.of(filePath))) {
+            arrayOfParameters = lines.toArray(String[]::new);
         } catch (IOException exception) {
             throw new SphereException("error was found while reading file " + path, exception);
         }
