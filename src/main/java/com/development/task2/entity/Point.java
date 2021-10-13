@@ -67,7 +67,7 @@ public class Point implements Serializable {
         StringBuilder sb = new StringBuilder(getClass().getSimpleName());
         sb.append("{");
         sb.append("x=").append(x);
-        sb.append("y=").append(y);
+        sb.append(", y=").append(y);
         sb.append(", z=").append(z);
         sb.append('}');
         return sb.toString();

@@ -30,6 +30,10 @@ public class Warehouse {
         shapeParameters.put(sphereId, sphereParameter);
     }
 
+    public void putParameters(long sphereId, SphereParameter sphereParameter) {
+        shapeParameters.put(sphereId, sphereParameter);
+    }
+
     public SphereParameter getParameters(long sphereId) {
         return shapeParameters.get(sphereId);
     }

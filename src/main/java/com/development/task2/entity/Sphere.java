@@ -75,7 +75,7 @@ public class Sphere implements Observable {
         StringBuilder sb = new StringBuilder(getClass().getSimpleName());
         sb.append("{");
         sb.append("sphereId=").append(sphereId);
-        sb.append("center=").append(center);
+        sb.append(", center=").append(center);
         sb.append(", radius=").append(radius);
         sb.append('}');
         return sb.toString();
