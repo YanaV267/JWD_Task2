@@ -1,8 +1,11 @@
 package com.development.task2.parser;
 
-import com.development.task2.entity.Sphere;
 import com.development.task2.exception.SphereException;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface SphereParser {
-    Sphere parseParameters(String[] parameterValues) throws SphereException;
+    List<double[]> parseParameters(String[] parameterValues) throws SphereException;
+    Optional<double[]> parseParameters(String parameterValues);
 }

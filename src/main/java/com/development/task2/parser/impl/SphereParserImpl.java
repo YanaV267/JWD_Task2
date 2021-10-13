@@ -17,7 +17,7 @@ public class SphereParserImpl implements SphereParser {
     private static final String DELIMITER_REGEX = "/";
 
     @Override
-    public Sphere parseParameters(String[] parameterStrings) throws SphereException {
+    public List<double[]> parseParameters(String[] parameterStrings) throws SphereException {
         if (parameterStrings == null) {
             LOGGER.error("File is empty. No data was found in it.");
             throw new SphereException("File is empty. No data was found in it.");
@@ -36,6 +36,22 @@ public class SphereParserImpl implements SphereParser {
             LOGGER.error("There is no string with valid parameters.");
             throw new SphereException("There is no string with valid parameters.");
         }
-        return SphereFactory.createSphere(spheresParameters.get(0));
+        return spheresParameters;
+    }
+
+    @Override
+    public Optional<double[]> parseParameters(String parameterStrings) {
+        SphereValidator sphereValidator = SphereValidatorImpl.getInstance();
+        String[] parameters = parameterStrings.split(DELIMITER_REGEX);
+        double[] spheresParameters = Arrays.stream(parameters)
+                .filter(sphereValidator::checkParameterValue)
+                .mapToDouble(Double::parseDouble)
+                .toArray();
+
+        if (spheresParameters.length != parameters.length) {
+            LOGGER.error("String is invalid.");
+            spheresParameters = null;
+        }
+        return Optional.ofNullable(spheresParameters);
     }
 }

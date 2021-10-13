@@ -7,42 +7,46 @@ import com.development.task2.validator.impl.SphereValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.*;
 
 public class SphereFactory {
     static final Logger LOGGER = LogManager.getLogger(Sphere.class.getSimpleName());
-    private static final int FIRST_PARAMETER_AMOUNT_REGEX = 4;
-    private static final int SECOND_PARAMETER_AMOUNT_REGEX = 6;
+    private static final int FIRST_PARAMETER_AMOUNT = 4;
+    private static final int SECOND_PARAMETER_AMOUNT = 6;
 
     private SphereFactory() {
     }
 
-    public static List<Sphere> createSpheres(List<double[]> spheresParameters) throws SphereException {
-        List<Sphere> spheres = new ArrayList<>();
-        for (double[] sphereParameters : spheresParameters) {
-            if (SphereValidatorImpl.getInstance().checkParameterAmount(sphereParameters)) {
-                Sphere sphere = createSphere(sphereParameters);
-                spheres.add(sphere);
-            }
-        }
-        return spheres;
+    public static List<Sphere> createSpheres(List<double[]> spheresParameters) {
+        return spheresParameters.stream()
+                .filter(p -> SphereValidatorImpl.getInstance().checkParameterAmount(p))
+                .map(SphereFactory::createSphere)
+                .toList();
     }
 
-    public static Sphere createSphere(double... parameters) throws SphereException {
-        if (parameters.length == FIRST_PARAMETER_AMOUNT_REGEX) {
-            return createSphere(new Point(parameters[0], parameters[1], parameters[2]), parameters[3]);
+    public static Sphere createSphere(double... parameters) {
+        if (parameters.length == FIRST_PARAMETER_AMOUNT) {
+            return createSphere(parameters[0], parameters[1], parameters[2], parameters[3]);
         }
-        if (parameters.length == SECOND_PARAMETER_AMOUNT_REGEX) {
-            return createFromTwoPoints(parameters);
+        if (parameters.length == SECOND_PARAMETER_AMOUNT) {
+            try {
+                return createFromTwoPoints(parameters);
+            } catch (SphereException exception) {
+                LOGGER.error("Error of creating sphere object." + exception);
+            }
         }
         return null;
     }
 
-    public static Sphere createSphere(Point point, double radius) {
-        return new Sphere(point, radius);
+    public static Sphere createSphere(Point center, double radius) {
+        return new Sphere(center, radius);
+    }
+
+    public static Sphere createSphere(double x, double y, double z, double radius) {
+        Point center = new Point(x, y, z);
+        return new Sphere(center, radius);
     }
 
     public static Sphere createFromTwoPoints(double[] array) throws SphereException {
