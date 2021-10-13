@@ -64,11 +64,12 @@ public class Point implements Serializable {
 
     @Override
     public String toString() {
-        Class<?> currentClass = this.getClass();
-        return currentClass.getSimpleName() + "{" +
-                "x=" + x +
-                ", y=" + y +
-                ", z=" + z +
-                '}';
+        StringBuilder sb = new StringBuilder(getClass().getSimpleName());
+        sb.append("{");
+        sb.append("x=").append(x);
+        sb.append("y=").append(y);
+        sb.append(", z=").append(z);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -20,10 +20,10 @@ public class SphereOperationTest {
     }
 
     @Test
-    public void findSurfaceSquare() {
+    public void findSurfaceArea() {
         double expected = 10;
-        double actual = sphereOperation.findSurfaceSquare(sphere);
-        Assert.assertEquals(actual, expected, "surface square value is invalid");
+        double actual = sphereOperation.findSurfaceArea(sphere);
+        Assert.assertEquals(actual, expected, "surface area value is invalid");
     }
 
     @Test

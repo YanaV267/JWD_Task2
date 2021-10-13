@@ -1,5 +1,6 @@
 package com.development.task2.validator.impl;
 
+import com.development.task2.entity.Point;
 import com.development.task2.entity.Sphere;
 import com.development.task2.validator.SphereValidator;
 
@@ -7,7 +8,8 @@ public class SphereValidatorImpl implements SphereValidator {
     private static final SphereValidatorImpl instance = new SphereValidatorImpl();
 
     private static final String PARAMETER_VALUE_REGEX = "\\d+\\.?\\d*";
-    private static final int PARAMETER_AMOUNT_REGEX = 4;
+    private static final int FIRST_PARAMETER_AMOUNT_REGEX = 4;
+    private static final int SECOND_PARAMETER_AMOUNT_REGEX = 6;
 
     private SphereValidatorImpl() {
 
@@ -24,7 +26,7 @@ public class SphereValidatorImpl implements SphereValidator {
 
     @Override
     public boolean checkParameterAmount(double[] parameters) {
-        return parameters.length == PARAMETER_AMOUNT_REGEX;
+        return parameters.length == FIRST_PARAMETER_AMOUNT_REGEX || parameters.length == SECOND_PARAMETER_AMOUNT_REGEX;
     }
 
     @Override
@@ -33,5 +35,10 @@ public class SphereValidatorImpl implements SphereValidator {
             return false;
         }
         return y >= sphere.getCenter().getY() - sphere.getRadius();
+    }
+
+    @Override
+    public boolean checkPointLocations(Point firstPoint, Point secondPoint){
+        return !firstPoint.equals(secondPoint);
     }
 }

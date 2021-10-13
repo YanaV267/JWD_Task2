@@ -14,7 +14,7 @@ public class SphereOperationImpl implements SphereOperation {
     static final Logger LOGGER = LogManager.getLogger(Sphere.class.getSimpleName());
 
     @Override
-    public double findSurfaceSquare(Sphere sphere) {
+    public double findSurfaceArea(Sphere sphere) {
         return 4 * PI * pow(sphere.getRadius(), 2);
     }
 
@@ -24,7 +24,7 @@ public class SphereOperationImpl implements SphereOperation {
     }
 
     @Override
-    public boolean isSphere(Sphere sphere) {
+    public boolean isSphere(Sphere sphere) {//?
         return true;
     }
 

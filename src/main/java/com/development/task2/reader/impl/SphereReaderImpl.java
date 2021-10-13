@@ -21,6 +21,7 @@ public class SphereReaderImpl implements SphereReader {
         String filePath = URLDecoder.decode(Objects.requireNonNull(getClass().getClassLoader().getResource(path)).getPath(),
                 StandardCharsets.UTF_8);
         filePath = filePath.replace("/", "\\\\").substring(2);
+
         String[] arrayOfParameters;
         try (Stream<String> lines = Files.lines(Path.of(filePath))) {
             arrayOfParameters = lines.toArray(String[]::new);

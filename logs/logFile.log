@@ -1,1 +1,21 @@
-[ERROR] 2021-10-10 10:01:43.837 [main]   Sphere - The amount of received parameters is invalid.
+[INFO ] 2021-10-12 11:19:35.362 [main]   Sphere - 2
+[INFO ] 2021-10-12 11:20:24.207 [main]   Sphere - 3
+[ERROR] 2021-10-12 11:34:08.966 [main]   Sphere - There is no string with necessary amount of parameters.
+[ERROR] 2021-10-12 11:34:09.046 [main]   Sphere - There is no string with necessary amount of parameters.
+[INFO ] 2021-10-12 11:34:09.096 [main]   Sphere - 1
+[ERROR] 2021-10-12 11:34:09.109 [main]   Sphere - There is no string with necessary amount of parameters.
+[INFO ] 2021-10-12 11:34:09.120 [main]   Sphere - 1
+[INFO ] 2021-10-12 11:34:09.216 [main]   Sphere - 1
+[ERROR] 2021-10-12 11:35:28.289 [main]   Sphere - There is no string with necessary amount of parameters.
+[ERROR] 2021-10-12 11:35:28.329 [main]   Sphere - There is no string with necessary amount of parameters.
+[INFO ] 2021-10-12 11:35:28.346 [main]   Sphere - 1
+[ERROR] 2021-10-12 11:35:28.376 [main]   Sphere - There is no string with necessary amount of parameters.
+[INFO ] 2021-10-12 11:35:28.380 [main]   Sphere - 1
+[INFO ] 2021-10-12 11:35:28.408 [main]   Sphere - 1
+[ERROR] 2021-10-12 11:40:56.171 [main]   Sphere - There is no string with necessary amount of parameters.
+[INFO ] 2021-10-12 11:40:56.212 [main]   Sphere - 3
+[INFO ] 2021-10-12 11:40:56.222 [main]   Sphere - 3
+[ERROR] 2021-10-12 11:40:56.239 [main]   Sphere - There is no string with necessary amount of parameters.
+[INFO ] 2021-10-12 11:40:56.247 [main]   Sphere - 2
+[ERROR] 2021-10-12 11:45:08.325 [main]   Sphere - There is no string with necessary amount of parameters.
+[ERROR] 2021-10-12 11:45:08.382 [main]   Sphere - There is no string with necessary amount of parameters.

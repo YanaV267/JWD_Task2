@@ -4,7 +4,7 @@ import com.development.task2.entity.Sphere;
 import com.development.task2.exception.SphereException;
 
 public interface SphereOperation {
-    double findSurfaceSquare(Sphere sphere);
+    double findSurfaceArea(Sphere sphere);
     double findVolume(Sphere sphere);
     boolean isSphere(Sphere sphere);
     double findVolumeRatio(Sphere sphere, double y) throws SphereException;
