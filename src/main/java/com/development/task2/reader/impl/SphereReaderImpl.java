@@ -2,6 +2,7 @@ package com.development.task2.reader.impl;
 
 import com.development.task2.exception.SphereException;
 import com.development.task2.reader.SphereReader;
+import com.development.task2.validator.impl.SphereValidatorImpl;
 
 import java.io.*;
 import java.net.URLDecoder;
@@ -15,7 +16,7 @@ public class SphereReaderImpl implements SphereReader {
 
     @Override
     public String[] readParameters(String path) throws SphereException {
-        if (getClass().getClassLoader().getResource(path) == null) {
+        if (SphereValidatorImpl.getInstance().checkFile(path)) {
             throw new SphereException("file " + path + " doesn't exits in this directory");
         }
         String filePath = URLDecoder.decode(Objects.requireNonNull(getClass().getClassLoader().getResource(path)).getPath(),

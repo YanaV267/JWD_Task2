@@ -6,7 +6,6 @@ import com.development.task2.exception.SphereException;
 public interface SphereOperation {
     double findSurfaceArea(Sphere sphere);
     double findVolume(Sphere sphere);
-    boolean isSphere(Sphere sphere);
     double findVolumeRatio(Sphere sphere, double y) throws SphereException;
     boolean isTouchingPlane(Sphere sphere);
 }

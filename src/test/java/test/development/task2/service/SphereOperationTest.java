@@ -34,12 +34,6 @@ public class SphereOperationTest {
     }
 
     @Test
-    public void isSphere() {
-        boolean actual = sphereOperation.isSphere(sphere);
-        Assert.assertTrue(actual, "this figure isn't a sphere");
-    }
-
-    @Test
     public void findVolumeRatio() throws SphereException {
         double expected = 3.5;
         double actual = sphereOperation.findVolumeRatio(sphere, 2);

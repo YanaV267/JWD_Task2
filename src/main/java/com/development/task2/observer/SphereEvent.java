@@ -5,7 +5,7 @@ import com.development.task2.entity.Sphere;
 import java.util.EventObject;
 
 public class SphereEvent extends EventObject {
-    public SphereEvent(Object source) {
+    public SphereEvent(Sphere source) {
         super(source);
     }
 

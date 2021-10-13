@@ -95,7 +95,10 @@ public class Sphere implements Observable {
 
     @Override
     public void notifyObservers() {
+        if(observers.isEmpty()){
+            return;
+        }
         SphereEvent event = new SphereEvent(this);
-        observers.forEach(o -> o.parameterChanged(event));
+        observers.forEach(o -> o.parametersChange(event));
     }
 }

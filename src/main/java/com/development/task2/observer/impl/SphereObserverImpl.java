@@ -13,7 +13,7 @@ public class SphereObserverImpl implements SphereObserver {
     private static final Logger LOGGER = LogManager.getLogger(SphereObserverImpl.class);
 
     @Override
-    public void parameterChanged(SphereEvent event) {
+    public void parametersChange(SphereEvent event) {
         SphereOperationImpl sphereOperation = new SphereOperationImpl();
         Sphere sphere = event.getSource();
 

@@ -20,6 +20,11 @@ public class SphereValidatorImpl implements SphereValidator {
     }
 
     @Override
+    public boolean checkFile(String path){
+        return getClass().getClassLoader().getResource(path) == null;
+    }
+
+    @Override
     public boolean checkParameterValue(String parameterValue) {
         return parameterValue.matches(PARAMETER_VALUE_REGEX) && Double.parseDouble(parameterValue) != 0;
     }

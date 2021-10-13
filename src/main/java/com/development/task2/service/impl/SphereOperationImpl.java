@@ -24,11 +24,6 @@ public class SphereOperationImpl implements SphereOperation {
     }
 
     @Override
-    public boolean isSphere(Sphere sphere) {//?
-        return true;
-    }
-
-    @Override
     public double findVolumeRatio(Sphere sphere, double y) throws SphereException {
         if (!SphereValidatorImpl.getInstance().checkPlaneCoordinate(sphere, y)) {
             LOGGER.error("Plane doesn't cross this sphere.");

@@ -6,7 +6,7 @@ import java.util.*;
 
 public class SphereRepository {
     private static final SphereRepository instance = new SphereRepository();
-    private List<Sphere> spheres;
+    private final List<Sphere> spheres;
 
     private SphereRepository() {
         spheres = new ArrayList<>();
@@ -20,28 +20,40 @@ public class SphereRepository {
         return Collections.unmodifiableList(spheres);
     }
 
+    public int size() {
+        return spheres.size();
+    }
+
+    public boolean isEmpty() {
+        return spheres.isEmpty();
+    }
+
     public boolean add(Sphere sphere) {
         return spheres.add(sphere);
     }
 
-    public boolean addAll(Collection<? extends Sphere> spheres) {
-        return this.spheres.addAll(spheres);
+    public boolean remove(Sphere sphere) {
+        return spheres.remove(sphere);
     }
 
-    public void remove(Sphere sphere) {
-        spheres.remove(sphere);
+    public Sphere remove(int index) {
+        return spheres.remove(index);
     }
 
-    public boolean removeAll(Collection<? extends Sphere> spheres) {
-        return this.spheres.removeAll(spheres);
+    public boolean addAll(Collection<? extends Sphere> collection) {
+        return spheres.addAll(collection);
+    }
+
+    public boolean removeAll(Collection<? extends Sphere> collection) {
+        return spheres.removeAll(collection);
     }
 
     public Sphere get(int index) {
         return spheres.get(index);
     }
 
-    public Sphere set(int index, Sphere sphere) {
-        return spheres.set(index, sphere);
+    public Sphere set(int index, Sphere element) {
+        return spheres.set(index, element);
     }
 
     public List<Sphere> query(SphereSpecification specification) {

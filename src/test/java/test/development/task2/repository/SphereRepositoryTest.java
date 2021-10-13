@@ -1,37 +1,66 @@
 package test.development.task2.repository;
 
+import com.development.task2.comparator.*;
+import com.development.task2.entity.Point;
+import com.development.task2.entity.Sphere;
+import com.development.task2.repository.SphereRepository;
+import com.development.task2.repository.SphereSpecification;
+import com.development.task2.repository.impl.IdSpecification;
+import com.development.task2.repository.impl.RadiusSpecification;
+import com.development.task2.repository.impl.SurfaceAreaSpecification;
+import com.development.task2.repository.impl.VolumeSpecification;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.Comparator;
+import java.util.List;
+
 public class SphereRepositoryTest {
-    @Test
-    public void add() {
+    private SphereRepository sphereRepository;
+
+    @BeforeTest
+    public void init() {
+        sphereRepository = SphereRepository.getInstance();
+        sphereRepository.add(new Sphere(new Point(4, 3, 7), 7));
+        sphereRepository.add(new Sphere(new Point(10, 9, 4), 3));
+        sphereRepository.add(new Sphere(new Point(4, 2, 6), 8));
+        sphereRepository.add(new Sphere(new Point(1, 3, 8.5), 14));
     }
 
-    @Test
-    public void addAll() {
+    @Test(dataProvider = "queryData")
+    public void query(SphereSpecification specification) {
+        int expected = 1;
+        List<Sphere> spheres = sphereRepository.query(specification);
+        Assert.assertEquals(spheres.size(), expected, "invalid result of specification");
     }
 
-    @Test
-    public void remove() {
+    @Test(dataProvider = "sortData")
+    public void sort(Comparator<Sphere> comparator) {
+        double expected = 1;
+        List<Sphere> spheres = sphereRepository.sort(comparator);
+        Assert.assertEquals(spheres.get(0).getSphereId(), expected, "invalid result of sorting");
     }
 
-    @Test
-    public void removeAll() {
+    @DataProvider(name = "queryData")
+    public Object[][] getQueryData() {
+        return new Object[][]{
+                {new IdSpecification(1)},
+                {new RadiusSpecification(3, 7)},
+                {new SurfaceAreaSpecification(50, 210)},
+                {new VolumeSpecification(870, 1500)}
+        };
     }
 
-    @Test
-    public void get() {
-    }
-
-    @Test
-    public void set() {
-    }
-
-    @Test
-    public void query() {
-    }
-
-    @Test
-    public void sort() {
+    @DataProvider(name = "sortData")
+    public Object[][] getSortData() {
+        return new Object[][]{
+                {new SphereIdComparator()},
+                {new SphereRadiusComparator()},
+                {new SphereXComparator()},
+                {new SphereYComparator()},
+                {new SphereZComparator()}
+        };
     }
 }
