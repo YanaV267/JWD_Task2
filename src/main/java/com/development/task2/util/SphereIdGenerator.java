@@ -8,6 +8,6 @@ public class SphereIdGenerator {
     }
 
     public static long getCounter(){
-        return counter++;
+        return ++counter;
     }
 }
