@@ -59,7 +59,7 @@ public class Sphere implements Observable {
         if (Double.compare(sphere.radius, radius) != 0) {
             return false;
         }
-        return center == null ? sphere.center != null : center.equals(sphere.center);
+        return center != null ? center.equals(sphere.center) : sphere.center != null;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class Sphere implements Observable {
 
     @Override
     public void notifyObservers() {
-        if(observers.isEmpty()){
+        if (observers.isEmpty()) {
             return;
         }
         SphereEvent event = new SphereEvent(this);
