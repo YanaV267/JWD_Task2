@@ -2,7 +2,6 @@ package com.development.task2.parser.impl;
 
 import com.development.task2.entity.Sphere;
 import com.development.task2.exception.SphereException;
-import com.development.task2.factory.SphereFactory;
 import com.development.task2.parser.SphereParser;
 import com.development.task2.validator.SphereValidator;
 import com.development.task2.validator.impl.SphereValidatorImpl;
@@ -17,13 +16,13 @@ public class SphereParserImpl implements SphereParser {
     private static final String DELIMITER_REGEX = "/";
 
     @Override
-    public List<double[]> parseParameters(String[] parameterStrings) throws SphereException {
-        if (parameterStrings == null) {
+    public List<double[]> parseParameters(String[] parametersValues) throws SphereException {
+        if (parametersValues == null) {
             LOGGER.error("File is empty. No data was found in it.");
             throw new SphereException("File is empty. No data was found in it.");
         }
         SphereValidator sphereValidator = SphereValidatorImpl.getInstance();
-        List<double[]> spheresParameters = Arrays.stream(parameterStrings)
+        List<double[]> spheresParameters = Arrays.stream(parametersValues)
                 .filter(p -> p.split(DELIMITER_REGEX).length == Arrays.stream(p.split(DELIMITER_REGEX))
                         .filter(sphereValidator::checkParameterValue)
                         .mapToDouble(Double::parseDouble)
@@ -40,9 +39,9 @@ public class SphereParserImpl implements SphereParser {
     }
 
     @Override
-    public Optional<double[]> parseParameters(String parameterStrings) {
+    public Optional<double[]> parseParameters(String parametersValues) {
         SphereValidator sphereValidator = SphereValidatorImpl.getInstance();
-        String[] parameters = parameterStrings.split(DELIMITER_REGEX);
+        String[] parameters = parametersValues.split(DELIMITER_REGEX);
         double[] spheresParameters = Arrays.stream(parameters)
                 .filter(sphereValidator::checkParameterValue)
                 .mapToDouble(Double::parseDouble)
