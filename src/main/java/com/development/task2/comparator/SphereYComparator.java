@@ -9,6 +9,6 @@ public class SphereYComparator implements Comparator<Sphere> {
     public int compare(Sphere s1, Sphere s2) {
         double firstY = s1.getCenter().getY();
         double secondY = s2.getCenter().getY();
-        return (int) (firstY - secondY);
+        return Double.compare(firstY, secondY);
     }
 }

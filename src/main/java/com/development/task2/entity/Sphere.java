@@ -14,15 +14,17 @@ public class Sphere implements Observable {
     private double radius;
     private final List<SphereObserver> observers = new ArrayList<>();
 
+    {
+        sphereId = SphereIdGenerator.generateId();
+    }
+
     public Sphere() {
         center = new Point();
-        sphereId = SphereIdGenerator.getCounter();
     }
 
     public Sphere(Point center, double radius) {
         this.center = center;
         this.radius = radius;
-        sphereId = SphereIdGenerator.getCounter();
     }
 
     public Point getCenter() {
@@ -31,7 +33,6 @@ public class Sphere implements Observable {
 
     public void setCenter(Point center) {
         this.center = center;
-        notifyObservers();
     }
 
     public double getRadius() {
@@ -49,16 +50,13 @@ public class Sphere implements Observable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
+        if (this == o)
             return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
+        if (o == null || getClass() != o.getClass())
             return false;
-        }
         Sphere sphere = (Sphere) o;
-        if (Double.compare(sphere.radius, radius) != 0) {
+        if (Double.compare(sphere.radius, radius) != 0)
             return false;
-        }
         return center != null ? center.equals(sphere.center) : sphere.center != null;
     }
 

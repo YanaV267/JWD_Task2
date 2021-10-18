@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 import static java.lang.Math.*;
 
 public class SphereOperationImpl implements SphereOperation {
-    static final Logger LOGGER = LogManager.getLogger(Sphere.class.getSimpleName());
+    static final Logger LOGGER = LogManager.getLogger(SphereOperationImpl.class);
 
     @Override
     public double findSurfaceArea(Sphere sphere) {

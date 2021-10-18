@@ -7,7 +7,7 @@ public class SphereIdGenerator {
 
     }
 
-    public static long getCounter(){
+    public static long generateId(){
         return ++counter;
     }
 }

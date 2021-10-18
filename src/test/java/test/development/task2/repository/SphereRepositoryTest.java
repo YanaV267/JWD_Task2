@@ -5,10 +5,7 @@ import com.development.task2.entity.Point;
 import com.development.task2.entity.Sphere;
 import com.development.task2.repository.SphereRepository;
 import com.development.task2.repository.SphereSpecification;
-import com.development.task2.repository.impl.IdSpecification;
-import com.development.task2.repository.impl.RadiusSpecification;
-import com.development.task2.repository.impl.SurfaceAreaSpecification;
-import com.development.task2.repository.impl.VolumeSpecification;
+import com.development.task2.repository.impl.*;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -48,8 +45,9 @@ public class SphereRepositoryTest {
         return new Object[][]{
                 {new IdSpecification(1)},
                 {new RadiusSpecification(3, 7)},
-                {new SurfaceAreaSpecification(50, 210)},
-                {new VolumeSpecification(870, 1500)}
+                {new SurfaceAreaSpecification(210)},
+                {new VolumeSpecification(870)},
+                {new CenterDistanceSpecification(new Point(4,9,2), 50)}
         };
     }
 

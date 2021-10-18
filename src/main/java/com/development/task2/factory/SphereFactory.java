@@ -12,7 +12,7 @@ import java.util.List;
 import static java.lang.Math.*;
 
 public class SphereFactory {
-    static final Logger LOGGER = LogManager.getLogger(Sphere.class.getSimpleName());
+    static final Logger LOGGER = LogManager.getLogger(SphereFactory.class);
     private static final int FIRST_PARAMETER_AMOUNT = 4;
     private static final int SECOND_PARAMETER_AMOUNT = 6;
 

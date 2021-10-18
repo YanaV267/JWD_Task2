@@ -7,9 +7,9 @@ import com.development.task2.validator.SphereValidator;
 public class SphereValidatorImpl implements SphereValidator {
     private static final SphereValidatorImpl instance = new SphereValidatorImpl();
 
-    private static final String PARAMETER_VALUE_REGEX = "\\d+\\.?\\d*";
-    private static final int FIRST_PARAMETER_AMOUNT = 4;
-    private static final int SECOND_PARAMETER_AMOUNT = 6;
+    private static final String NUMBER_REGEX = "\\d+\\.?\\d*";
+    private static final int MIN_PARAMETER_AMOUNT = 4;
+    private static final int MAX_PARAMETER_AMOUNT = 6;
 
     private SphereValidatorImpl() {
 
@@ -20,18 +20,23 @@ public class SphereValidatorImpl implements SphereValidator {
     }
 
     @Override
+    public boolean checkReadParameters(String[] parametersValues) {
+        return parametersValues != null && parametersValues.length != 0;
+    }
+
+    @Override
     public boolean checkFile(String path){
         return getClass().getClassLoader().getResource(path) == null;
     }
 
     @Override
     public boolean checkParameterValue(String parameterValue) {
-        return parameterValue.matches(PARAMETER_VALUE_REGEX) && Double.parseDouble(parameterValue) != 0;
+        return parameterValue.matches(NUMBER_REGEX) && Double.parseDouble(parameterValue) != 0;
     }
 
     @Override
     public boolean checkParameterAmount(double[] parameters) {
-        return parameters.length == FIRST_PARAMETER_AMOUNT || parameters.length == SECOND_PARAMETER_AMOUNT;
+        return parameters.length == MIN_PARAMETER_AMOUNT || parameters.length == MAX_PARAMETER_AMOUNT;
     }
 
     @Override

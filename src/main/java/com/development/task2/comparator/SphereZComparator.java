@@ -9,6 +9,6 @@ public class SphereZComparator implements Comparator<Sphere> {
     public int compare(Sphere s1, Sphere s2) {
         double firstZ = s1.getCenter().getZ();
         double secondZ = s2.getCenter().getZ();
-        return (int) (firstZ - secondZ);
+        return Double.compare(firstZ, secondZ);
     }
 }

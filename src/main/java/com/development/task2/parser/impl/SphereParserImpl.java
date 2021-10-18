@@ -1,6 +1,5 @@
 package com.development.task2.parser.impl;
 
-import com.development.task2.entity.Sphere;
 import com.development.task2.exception.SphereException;
 import com.development.task2.parser.SphereParser;
 import com.development.task2.validator.SphereValidator;
@@ -12,16 +11,16 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class SphereParserImpl implements SphereParser {
-    static final Logger LOGGER = LogManager.getLogger(Sphere.class.getSimpleName());
+    static final Logger LOGGER = LogManager.getLogger(SphereParserImpl.class);
     private static final String DELIMITER_REGEX = "/";
 
     @Override
     public List<double[]> parseParameters(String[] parametersValues) throws SphereException {
-        if (parametersValues == null) {
+        SphereValidator sphereValidator = SphereValidatorImpl.getInstance();
+        if (!sphereValidator.checkReadParameters(parametersValues)) {
             LOGGER.error("File is empty. No data was found in it.");
             throw new SphereException("File is empty. No data was found in it.");
         }
-        SphereValidator sphereValidator = SphereValidatorImpl.getInstance();
         List<double[]> spheresParameters = Arrays.stream(parametersValues)
                 .filter(p -> p.split(DELIMITER_REGEX).length == Arrays.stream(p.split(DELIMITER_REGEX))
                         .filter(sphereValidator::checkParameterValue)

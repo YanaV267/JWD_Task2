@@ -5,11 +5,9 @@ import com.development.task2.repository.SphereSpecification;
 import com.development.task2.service.impl.SphereOperationImpl;
 
 public class SurfaceAreaSpecification implements SphereSpecification {
-    private final double minSurfaceArea;
     private final double maxSurfaceArea;
 
-    public SurfaceAreaSpecification(double minSurfaceArea, double maxSurfaceArea) {
-        this.minSurfaceArea = minSurfaceArea;
+    public SurfaceAreaSpecification(double maxSurfaceArea) {
         this.maxSurfaceArea = maxSurfaceArea;
     }
 
@@ -17,6 +15,6 @@ public class SurfaceAreaSpecification implements SphereSpecification {
     public boolean specify(Sphere sphere) {
         SphereOperationImpl sphereOperation = new SphereOperationImpl();
         double surfaceArea = sphereOperation.findSurfaceArea(sphere);
-        return minSurfaceArea <= surfaceArea && surfaceArea <= maxSurfaceArea;
+        return surfaceArea <= maxSurfaceArea;
     }
 }
