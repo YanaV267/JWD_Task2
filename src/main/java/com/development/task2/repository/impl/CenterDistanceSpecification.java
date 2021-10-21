@@ -20,6 +20,6 @@ public class CenterDistanceSpecification implements SphereSpecification {
         Point center = sphere.getCenter();
         double currentDistance = sqrt(pow(center.getX() - point.getX(), 2) + pow(center.getY() - point.getY(), 2) +
                 pow(center.getZ() - point.getZ(), 2));
-        return currentDistance == distance;
+        return Double.valueOf(currentDistance).equals(distance);
     }
 }

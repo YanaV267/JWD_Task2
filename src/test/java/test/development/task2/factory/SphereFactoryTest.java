@@ -1,7 +1,7 @@
 package test.development.task2.factory;
 
+import com.development.task2.entity.Point;
 import com.development.task2.entity.Sphere;
-import com.development.task2.exception.SphereException;
 import com.development.task2.factory.SphereFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -12,14 +12,21 @@ import java.util.*;
 public class SphereFactoryTest {
 
     @Test
-    public void createSphere() throws SphereException {
+    public void createSphere() {
         double[] parameters = {4, 1, 6, 8};
         Sphere sphere = SphereFactory.createSphere(parameters);
         Assert.assertNotEquals(sphere, null, "sphere creating is invalid");
     }
 
+    @Test
+    public void createSphereByCenter() {
+        Point center = new Point(6, 2, 4);
+        Sphere sphere = SphereFactory.createSphere(center, 14);
+        Assert.assertNotEquals(sphere, null, "sphere creating is invalid");
+    }
+
     @Test(dataProvider = "getParametersForSpheres")
-    public void createSpheres(double[][] parameters) throws SphereException {
+    public void createSpheres(double[][] parameters) {
         List<double[]> spheresParameters = Arrays.stream(parameters).toList();
         List<Sphere> spheres = SphereFactory.createSpheres(spheresParameters);
         Assert.assertNotEquals(spheres.size(), 0, "creating of spheres is invalid");
@@ -35,7 +42,6 @@ public class SphereFactoryTest {
                 new double[]{6, 1, 5, 4},
                 new double[]{2, 9, 10, 2, 8, 2},
                 new double[]{7, 3, 2, 6, 9}
-        }
-        };
+        }};
     }
 }

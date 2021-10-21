@@ -3,6 +3,7 @@ package com.development.task2.factory;
 import com.development.task2.entity.Sphere;
 import com.development.task2.entity.Point;
 import com.development.task2.exception.SphereException;
+import com.development.task2.observer.impl.SphereObserverImpl;
 import com.development.task2.validator.impl.SphereValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,12 +42,16 @@ public class SphereFactory {
     }
 
     public static Sphere createSphere(Point center, double radius) {
-        return new Sphere(center, radius);
+        Sphere sphere = new Sphere(center, radius);
+        sphere.attach(new SphereObserverImpl());
+        return sphere;
     }
 
     public static Sphere createSphere(double x, double y, double z, double radius) {
         Point center = new Point(x, y, z);
-        return new Sphere(center, radius);
+        Sphere sphere = new Sphere(center, radius);
+        sphere.attach(new SphereObserverImpl());
+        return sphere;
     }
 
     public static Sphere createFromTwoPoints(double[] array) throws SphereException {
@@ -59,7 +64,10 @@ public class SphereFactory {
             double centerX = abs(secondPoint.getX() - firstPoint.getX()) / 2;
             double centerY = abs(secondPoint.getY() - firstPoint.getY()) / 2;
             double centerZ = abs(secondPoint.getZ() - firstPoint.getZ()) / 2;
-            return new Sphere(new Point(centerX, centerY, centerZ), diameter / 2);
+            Point center = new Point(centerX, centerY, centerZ);
+            Sphere sphere = new Sphere(center, diameter / 2);
+            sphere.attach(new SphereObserverImpl());
+            return sphere;
         } else {
             LOGGER.error("The coordinates of points are similar (invalid data).");
             throw new SphereException("The coordinates of points are similar (invalid data).");

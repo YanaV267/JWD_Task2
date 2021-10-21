@@ -22,9 +22,9 @@ public class Warehouse {
         return instance;
     }
 
-    public void putParameters(long sphereId, double surfaceSquare, double volume) {
+    public void putParameters(long sphereId, double surfaceArea, double volume) {
         SphereParameter sphereParameter = new SphereParameter();
-        sphereParameter.setSurfaceArea(surfaceSquare);
+        sphereParameter.setSurfaceArea(surfaceArea);
         sphereParameter.setVolume(volume);
         sphereParameters.put(sphereId, sphereParameter);
     }
@@ -37,13 +37,13 @@ public class Warehouse {
         return sphereParameters.get(sphereId);
     }
 
-    public boolean updateParameters(long sphereId, double surfaceSquare, double volume) {
+    public boolean updateParameters(long sphereId, double surfaceArea, double volume) {
         SphereParameter sphereParameter = sphereParameters.get(sphereId);
         if (sphereParameter == null) {
             LOGGER.error("There is no sphere with such ID.");
             return false;
         }
-        sphereParameter.setSurfaceArea(surfaceSquare);
+        sphereParameter.setSurfaceArea(surfaceArea);
         sphereParameter.setVolume(volume);
         return true;
     }

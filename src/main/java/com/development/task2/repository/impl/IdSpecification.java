@@ -12,6 +12,6 @@ public class IdSpecification implements SphereSpecification {
 
     @Override
     public boolean specify(Sphere sphere) {
-        return id == sphere.getSphereId();
+        return Long.valueOf(id).equals(sphere.getSphereId());
     }
 }
