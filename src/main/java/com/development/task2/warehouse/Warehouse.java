@@ -47,4 +47,24 @@ public class Warehouse {
         sphereParameter.setVolume(volume);
         return true;
     }
+
+    public boolean updateSurfaceArea(long sphereId, double surfaceArea) {
+        SphereParameter sphereParameter = sphereParameters.get(sphereId);
+        if (sphereParameter == null) {
+            LOGGER.error("There is no sphere with such ID.");
+            return false;
+        }
+        sphereParameter.setSurfaceArea(surfaceArea);
+        return true;
+    }
+
+    public boolean updateVolume(long sphereId, double volume) {
+        SphereParameter sphereParameter = sphereParameters.get(sphereId);
+        if (sphereParameter == null) {
+            LOGGER.error("There is no sphere with such ID.");
+            return false;
+        }
+        sphereParameter.setVolume(volume);
+        return true;
+    }
 }

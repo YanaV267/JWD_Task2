@@ -49,7 +49,7 @@ public class WarehouseTest {
         double expected = 27;
         warehouse.putParameters(sphereId, surfaceArea, volume);
         warehouse.updateParameters(sphereId, 27, volume);
-        double actual = warehouse.getParameters(sphereId).getVolume();
+        double actual = warehouse.getParameters(sphereId).getSurfaceArea();
         Assert.assertEquals(actual, expected, "putting parameters in warehouse is invalid");
     }
 

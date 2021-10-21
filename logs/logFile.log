@@ -1,9 +1,2 @@
-[ERROR] 2021-10-13 15:44:36.788 [main]   Sphere - There is no string with valid parameters.
-[ERROR] 2021-10-13 15:44:36.858 [main]   Sphere - There is no string with valid parameters.
-[ERROR] 2021-10-13 15:45:26.324 [main]   Sphere - There is no string with valid parameters.
-[ERROR] 2021-10-13 15:45:26.353 [main]   Sphere - There is no string with valid parameters.
-[ERROR] 2021-10-13 15:46:24.088 [main]   Sphere - There is no string with valid parameters.
-[ERROR] 2021-10-13 15:48:05.299 [main]   Sphere - There is no string with valid parameters.
-[ERROR] 2021-10-13 15:48:05.356 [main]   Sphere - String is invalid.
-[ERROR] 2021-10-13 15:50:11.418 [main]   Sphere - There is no string with valid parameters.
-[ERROR] 2021-10-13 15:50:11.468 [main]   Sphere - String is invalid.
+[ERROR] 2021-10-21 21:43:01.233 [main]   SphereFactory - The coordinates of points are similar (invalid data).
+[ERROR] 2021-10-21 21:43:01.287 [main]   SphereFactory - Error of creating sphere object.com.development.task2.exception.SphereException: The coordinates of points are similar (invalid data).
