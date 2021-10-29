@@ -32,7 +32,7 @@ public class SphereReaderImpl implements SphereReader {
             arrayOfParameters = lines.toArray(String[]::new);
         } catch (IOException exception) {
             LOGGER.error("error was found while reading file " + path, exception);
-            throw new SphereException("error was found while reading file " + path, exception);
+            throw new SphereException("error was found while reading file " + path + exception);
         }
         return arrayOfParameters;
     }
