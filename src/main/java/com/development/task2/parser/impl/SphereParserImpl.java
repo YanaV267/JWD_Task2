@@ -47,7 +47,7 @@ public class SphereParserImpl implements SphereParser {
                 .toArray();
 
         if (spheresParameters.length != parameters.length) {
-            LOGGER.error("String is invalid.");
+            LOGGER.error("String \"" + parametersValues + "\" is invalid.");
             spheresParameters = null;
         }
         return Optional.ofNullable(spheresParameters);

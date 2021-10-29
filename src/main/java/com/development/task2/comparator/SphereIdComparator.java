@@ -8,6 +8,5 @@ public class SphereIdComparator implements Comparator<Sphere> {
     @Override
     public int compare(Sphere s1, Sphere s2) {
         return Long.compare(s1.getSphereId(), s2.getSphereId());
-
     }
 }

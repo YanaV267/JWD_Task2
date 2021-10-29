@@ -1,2 +1,9 @@
-[ERROR] 2021-10-21 21:43:01.233 [main]   SphereFactory - The coordinates of points are similar (invalid data).
-[ERROR] 2021-10-21 21:43:01.287 [main]   SphereFactory - Error of creating sphere object.com.development.task2.exception.SphereException: The coordinates of points are similar (invalid data).
+[ERROR] 2021-10-24 12:18:04.076 [main]   SphereFactory - The coordinates of points are similar (invalid data).
+[ERROR] 2021-10-24 12:19:11.353 [main]   SphereFactory - The coordinates of points are similar (invalid data).
+[ERROR] 2021-10-24 12:19:11.362 [main]   SphereFactory - Error of creating sphere object.com.development.task2.exception.SphereException: The coordinates of points are similar (invalid data).
+[ERROR] 2021-10-29 12:20:48.998 [main]   SphereFactory - The coordinates of points are similar (invalid data).
+[ERROR] 2021-10-29 12:20:49.004 [main]   SphereFactory - Error of creating sphere object.com.development.task2.exception.SphereException: The coordinates of points are similar (invalid data).
+[ERROR] 2021-10-29 12:25:38.297 [main]   SphereParserImpl - There is no string with valid parameters.
+[ERROR] 2021-10-29 12:25:38.601 [main]   SphereParserImpl - String is invalid.
+[ERROR] 2021-10-29 12:27:12.025 [main]   SphereParserImpl - There is no string with valid parameters.
+[ERROR] 2021-10-29 12:27:12.077 [main]   SphereParserImpl - String "6d1/9/4/-3/2"is invalid.

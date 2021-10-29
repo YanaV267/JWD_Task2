@@ -15,14 +15,14 @@ public class SphereFactoryTest {
     public void createSphere() {
         double[] parameters = {4, 1, 6, 8};
         Sphere sphere = SphereFactory.createSphere(parameters);
-        Assert.assertNotEquals(sphere, null, "sphere creating is invalid");
+        Assert.assertNotNull(sphere, "sphere creating is invalid");
     }
 
     @Test
     public void createSphereByCenter() {
         Point center = new Point(6, 2, 4);
         Sphere sphere = SphereFactory.createSphere(center, 14);
-        Assert.assertNotEquals(sphere, null, "sphere creating is invalid");
+        Assert.assertNotNull(sphere, "sphere creating is invalid");
     }
 
     @Test(dataProvider = "getParametersForSpheres")

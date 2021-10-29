@@ -40,7 +40,7 @@ public class Warehouse {
     public boolean updateParameters(long sphereId, double surfaceArea, double volume) {
         SphereParameter sphereParameter = sphereParameters.get(sphereId);
         if (sphereParameter == null) {
-            LOGGER.error("There is no sphere with such ID.");
+            LOGGER.error("There is no sphere with such ID (" + sphereId + ")");
             return false;
         }
         sphereParameter.setSurfaceArea(surfaceArea);

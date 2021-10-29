@@ -38,6 +38,7 @@ public class SphereFactory {
                 LOGGER.error("Error of creating sphere object." + exception);
             }
         }
+        LOGGER.error("Error of creating sphere object: invalid parameter amount.");
         return null;
     }
 
